@@ -1,13 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- header start here -->
+    <header>
+        <!-- navbar containing logo and some links and a searchBar -->
+      <nav class="flex bg-sky-300 text-white p-5 justify-between">
+        <!-- Website logo  -->
+        <div class="logo text-3xl font-bold cursor-pointer">
+          WeatherApp<i class="fa-solid fa-cloud mx-2"></i>
+        </div>
+        <!-- nav list -->
+        <div class="nav-list text-xl flex list-none gap-5 font-semibold">
+           <!-- home -->
+            
+          <li class="nav-item hover:text-red-300">
+            <a href="#home">Home</a>
+          </li>
+
+           <!-- tells about app -->
+          <li class="nav-item hover:text-red-300">
+            <a href="#aboutApp">About this app</a>
+          </li>
+
+           <!-- tells about usage -->
+          <li class="nav-item hover:text-red-300">
+            <a href="#usage">
+                How to use?
+            </a>
+           </li>
+            
+          <li>
+            <!-- Search Bar  -->
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="enter city,location"
+              class="p-1 rounded-md text-sky-300 outline-none font-thin"
+            />
+
+            <!-- button for search City -->
+            <button>
+              <label for="search">
+                <button class="bg-sky-500 p-1 rounded-md hover:bg-sky-600 font-thin" onclick="searchCity()">Search</button>
+              </label>
+            </button>
+          </li>
+        </div>
+      </nav>
+   </header>  <!-- header ends here -->
+
+   <main class="flex p-2"> <!-- main start here -->
     
-    <h1 class="text-red-600 text-3xl">Hello World</h1>
-</body>
+    <!-- weather card I-->
+    <div class="card-I flex flex-col bg-gray-400 text-white p-10 rounded-md gap-5">
+      <div class="top text-3xl">
+           <span class="cityName">New Delhi,</span>
+           <span class="country">India</span>
+      </div>
+      <div class="middle flex justify-between">
+          <div class="text">CURRENT WEATHER</div>
+          <div class="time">08:38 am</div>
+      </div>
+      <div class="bottom flex">
+           <div class="icon"><i class="ri-sun-fill text-8xl text-yellow-200"></i></div>
+           <div class="temprature">
+               <span class="temp-value text-7xl">37.2</span>
+               <span class="unit">&deg;C</span>
+           </div>
+      </div>
+    </div>
+    
+    <!-- weather card II-->
+   
+     <div class="card-II">
+         <div class="row">
+           
+         </div>
+         <div class="row">
+
+         </div>
+         <div class="row">
+
+         </div>
+         <div class="row">
+
+         </div>
+         <div class="row">
+
+         </div>
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="mainCard bg-red-300">
+     
+      <div class="card-I bg-gray-400 w-72">
+
+      <h1 class="text-2xl cityName border-black">Ghaziabad</h1>
+      <div class="flex p-2">
+       <div class="text">CURRENT WEATHER</div>
+       <div class="time">--:--</div>
+
+       
+    
+     <div class="middle-div flex gap-12">
+
+      <div class="left flex align-middle justify-around">
+        <div id="weatherIcon"><i class="ri-sun-fill text-8xl text-yellow-200"></i></div>
+        <div class="temp text-5xl">-- &deg; c</div>
+       </div>
+      </div>
+
+    </div> -->
+      <!-- <div class="right p-1 w-96">
+
+      <div class="realfeel flex justify-between gap-5 border-b-white border-b-2 p-1">
+       <div class="parameter">RealFeel Shade</div>
+       <div class="value01">-- &deg; c</div>
+      </div>
+
+      <div class="wind flex justify-between gap-5 border-b-white border-b-2 p-1">
+        <div class="parameter">Wind</div>
+        <div class="value02">-- km/h</div>
+      </div>
+
+      <div class="windGust flex justify-between gap-5 border-b-white border-b-2 p-1">
+        <div class="parameter">Humidity</div>
+        <div class="value03">-- km/h</div>
+      </div>
+
+      <div class="aqi flex justify-between gap-5 border-b-white border-b-2 p-1">
+        <div class="parameter">Pressure</div>
+        <div class="value04">--N/m2</div>
+      </div>
+
+    </div> -->
+    </div>
+   
+  
+  
+  
+  
+  
+  
+  
+  </main>
+
+
+
+
+
+
+
+
+    <!-- Javascript file  -->
+    <script src="./script.js"></script>
+  </body>
 </html>
