@@ -1,0 +1,6 @@
+body{
+    background: url(/img/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: difference;
+}

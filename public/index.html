@@ -1,58 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WeatherApp</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-   <header>
-        <nav class="flex items-center justify-between bg-slate-500 p-6">
-             <div class="logo text-xl">WeatherApp <span><img src="" alt=""></span></div>
-             <ul class="nav-list list-none flex">
-                 <li>Home</li>
-                 <li>How to use?</li>
-                 <li>Feedback</li>
-                 <li>
-                    <button>Log in or Sign up</button>
-                 </li>
-             </ul>
-        </nav>
-   </header>
-   <main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="normalCss.css" />
+  </head>
+  <body class="text-white bg-black">
+    <!-- header start -->
+    <header class="mb-1">
+      <!-- navigation bar -->
+      <nav
+        class="flex items-center justify-between p-6 border-2 border-white rounded-lg shadow-sm"
+      >
+      <!-- logo with name-->
+        <div class="logo text-3xl flex items-center">
+          WeatherApp<img src="/img/cloudy.png" alt="logo" class="h-10"/>
+        </div>
+        <!-- nav links for navigation -->
+        <ul class="nav-list list-none flex text-xl gap-4 items-center">
+          <li class="hover:underline">Home</li>
+          <li class="hover:underline">How to use?</li>
+          <li class="hover:underline">Feedback</li>
+          <li>
+            <!-- button for sign up / login -->
+            <button class="bg-sky-500 p-2 rounded-lg hover:bg-sky-400">
+              Log in or Sign up
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- header End -->
+    <main class="flex">
       <div class="searchBox">
-         <input type="text" id="getCity">
-         <button>Get Data</button>
-         <hr>
-         <button class="currentLocation">Current Location</button>        
+        <input type="text" id="getCity" placeholder="for eg:New york" />
+        <button>Get Data</button>
+        <hr />
+        <button class="currentLocation">Current Location</button>
       </div>
       <div class="display">
-         <div class="left-display">
-            <div class="cityName">New Delhi,India</div>
-             <span class="temp">37.2 &deg; C</span>
-             <div class="weather-icon">ICON</div>
-            <div class="weather-condition">Sunny</div>
-         </div>
-         <div class="right-display">
-             <div class="weatherItem">
-                <div class="unit">Pressure</div>
-                <div class="value">120psi</div>
-             </div>
-             <div class="weatherItem">
-                <div class="unit">Humidity</div>
-                <div class="value">94%</div>
-             </div>
-             <div class="weatherItem">
-                <div class="unit">WindSpeed</div>
-                <div class="value">4 Km/hr</div>
-             </div>
-             <div class="weatherItem">
-                <div class="unit">AQI</div>
-                <div class="value">Poor</div>
-             </div>
-         </div>
+        <div class="left-display">
+          <div class="cityName">New Delhi,India</div>
+          <span class="temp">37.2 &deg; C</span>
+          <div class="weather-icon">ICON</div>
+          <div class="weather-condition">Sunny</div>
+        </div>
+        <div class="right-display">
+          <div class="weatherItem">
+            <div class="unit">Pressure</div>
+            <div class="value">120psi</div>
+          </div>
+          <div class="weatherItem">
+            <div class="unit">Humidity</div>
+            <div class="value">94%</div>
+          </div>
+          <div class="weatherItem">
+            <div class="unit">WindSpeed</div>
+            <div class="value">4 Km/hr</div>
+          </div>
+          <div class="weatherItem">
+            <div class="unit">AQI</div>
+            <div class="value">Poor</div>
+          </div>
+        </div>
       </div>
-   </main>
-</body>
+    </main>
+  </body>
 </html>
