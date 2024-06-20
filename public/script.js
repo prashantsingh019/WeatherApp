@@ -1,45 +1,43 @@
-function apiCall(location) {
-  fetch(
-    `http://api.weatherapi.com/v1/current.json?key=440ffce9deac4ee79ea20630241506&q=${location}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      insertData(data);
+// main function 
+function main(){
+     let search = document.querySelector("#search").value;
      
-       }
-     )
-    .catch((error) => console.log(error));
+     weatherInfo(search);
 }
-function currentTime(){
-   const date = new Date();
-   const hours = date.getHours().toString().padStart(2,'0');
-   const minutes = date.getMinutes().toString().padStart(2,'0');
-   const currentTime = `${hours}:${minutes}`;
-   document.querySelector(".time").innerHTML = currentTime;
-   console.log(currentTime);
-}
+// default location
+weatherInfo("New Delhi");
 
+// cc0c50e64405d2233dd1a807f0e13724
 
-function searchCity() {
-  let city = document.querySelector("#search").value;
-  city.toUpperCase;
-  console.log(city);
-  let cityName = document.querySelector(".cityName");
-  cityName.innerHTML = city;
-  apiCall(city);
-  currentTime()
- };
+// fetch API using Async / Await
 
-function insertData(data){
-      document.querySelector(".temp-value").innerHTML = `${data.current.temp_c} &deg; c`,
-      document.querySelector(".value01").innerHTML = `${data.current.feelslike_c} &deg; c`
-      document.querySelector(".value02").innerHTML = `${data.current.wind_kph} km/h`
-      document.querySelector(".value03").innerHTML = `${data.current.humidity} g/kg`
-      document.querySelector(".value04").innerHTML = `${data.current.pressure_in} N/m2`
-      setIcon(data);
+async function weatherInfo(location){
+    try{
+      let url = await fetch(`http://api.weatherapi.com/v1/current.json?key=440ffce9deac4ee79ea20630241506&q=${location}`);
+      let data = await url.json();
+      insertData(data);
+      console.log(data);
+    }catch(error){
+       console.log(error);
+    }
+    
 }
 
-function setIcon(data){
-   let temp = data.current.temp_c;
-   console.log(temp);
+// insert data 
+function insertData(weatherData){
+  const location = weatherData.location.name;
+  const country = weatherData.location.country;
+  const temperatureCelsius = weatherData.current.temp_c;
+  const humidity = weatherData.current.humidity;
+  const windSpeedKph = weatherData.current.wind_kph;
+  const conditionText = weatherData.current.condition.text;
+  const iconSet = weatherData.current.condition.icon;
+  // some insertion
+  document.querySelector(".cityName").innerHTML = `${location},`;
+  document.querySelector(".country").innerHTML = `${country}`;
+  document.querySelector(".temp-value").innerHTML = `${temperatureCelsius}`;
+  document.querySelector(".country").innerHTML = `${country}`;
+  document.querySelector(".country").innerHTML = `${country}`;
+  document.querySelector(".icon").innerHTML = `<img src = "https:${iconSet}" class = "w-3 inline-block">`;
+  document.querySelector(".condition").innerHTML = conditionText;
 }
