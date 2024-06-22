@@ -40,6 +40,8 @@ const dayD = document.querySelector(".day");
 get_btn.addEventListener("click", () => {
   findCoords(cityInput.value);
   cityInput.value = "";
+ // const elements = document.querySelectorAll('card');
+  elements.forEach(element => element.remove());
 });
 /****************************/
 
@@ -86,6 +88,7 @@ function weatherdisplay(data) {
     if (index == 0) {
       return;
     }
+    cardCreate(element)
   });
   temp.innerHTML = `${data.current.temp} &deg;C`;
   icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png" alt="weatherIcon">`;
@@ -141,7 +144,8 @@ async function reverseFetch(latitude, longitude) {
 }
 
 // card creation
-function cardCreate() {
+function cardCreate(element) {
+    console.log(element);
   const cardContainer = document.querySelector(".container");
   const card = document.createElement("div");
   card.classList.add(
@@ -150,16 +154,36 @@ function cardCreate() {
     "border-gray-300",
     "p-5",
     "rounded-lg",
-    "bg-gray-500"
+    "bg-gray-500",
+    "m-2"
+
   );
+  const dt = element.dt;
+  const timestampInMilliseconds = dt * 1000;
+  const time = new Date(timestampInMilliseconds);
+  const date = time.getDate();
+  const dayno = time.getDay();
+  const month = time.getMonth();
   card.innerHTML = `
-    <div class="daynday text-lg font-bold">Sunday,23 June</div>
-   <div class="icon">ICON</div>
-   <div class="temp text-5xl">37&deg;C</div>
-  <div class="windspeed">windspeed: 10 KM/hr</div>
+    <div class="daynday text-lg font-bold">${days[dayno]},${date} ${months[month]}</div>
+   <div class="icon"><img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" alt="weatherIcon"></div>
+   <div class="temp text-5xl">${element.temp.day}&deg;C</div>
+  <div class="windspeed">windspeed: ${element.wind_speed} KM/hr</div>
     `;
   cardContainer.appendChild(card);
+   
 }
+
+function removeElementsByClass(className) {
+   const elements = document.querySelectorAll(`.${className}`);
+    elements.forEach(element => element.remove());
+}
+get_btn.addEventListener('click', () => {
+    removeElementsByClass('card');
+});
+locate_btn.addEventListener('click', () => {
+    removeElementsByClass('card');
+});
 
 // default City
 findCoords("New Delhi");
