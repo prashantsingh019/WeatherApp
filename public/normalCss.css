@@ -1,6 +1,9 @@
 body{
-    background: url(/img/bg.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
+    
     background-blend-mode: difference;
+    background: linear-gradient(rgb(68, 23, 23), rgba(0, 0, 0, 0.716)),
+    url(/img/bg.jpg);
 }
+/* <div class="card  border-2 border-gray-300 p-5 rounded-lg bg-gray-500">
+
+</div>  */
