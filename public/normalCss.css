@@ -4,6 +4,32 @@ body{
     background: linear-gradient(rgb(68, 23, 23), rgba(0, 0, 0, 0.716)),
     url(/img/bg.jpg);
 }
-/* <div class="card  border-2 border-gray-300 p-5 rounded-lg bg-gray-500">
+.city{
+    border-bottom: 1px solid black;
+}
 
-</div>  */
+.inputBox:hover+.dropdown{
+    display: block;
+    background-color: aquamarine;
+}
+
+.option{
+    background-color: rgb(168, 164, 164);
+    padding: 5px 10px;
+}
+
+.option:hover{
+    background-color: rgb(222, 222, 222);
+}
+
+#getCity:focus +.option{
+    background-color: brown;
+}
+
+.dropdown{
+    display: none;
+}
+.option:active{
+    background-color: rgb(204, 39, 39);
+    cursor: pointer;
+}

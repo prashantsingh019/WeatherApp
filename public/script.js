@@ -10,6 +10,9 @@ const country = document.querySelector("#country");
 const temp = document.querySelector(".temp");
 const icon = document.querySelector(".weather-icon");
 const weatherCondition = document.querySelector(".weather-condition");
+const inputBox = document.querySelector('#getCity');
+const recentSearches = document.querySelector(".dropdown");
+const actionBtn = document.querySelectorAll('.btn-act');
 const days = [
   "Sunday",
   "Monday",
@@ -39,8 +42,9 @@ const dayD = document.querySelector(".day");
 
 get_btn.addEventListener("click", () => {
   findCoords(cityInput.value);
+   saveSearch(cityInput.value);
   cityInput.value = "";
- // const elements = document.querySelectorAll('card');
+  const elements = document.querySelectorAll('card');
   elements.forEach(element => element.remove());
 });
 /****************************/
@@ -53,7 +57,7 @@ function findCoords(cityName) {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+      //  console.log(data);
         display(data);
       });
   } catch (error) {
@@ -69,6 +73,7 @@ async function fetchApi(data) {
     )
       .then((res) => res.json())
       .then((data) => weatherdisplay(data));
+      recentSearches.style.display = 'none';
   } catch (error) {
     console.log(`Error while fetching API data:${error}`);
   }
@@ -83,7 +88,7 @@ function display(data) {
 }
 // displaying weatherData
 function weatherdisplay(data) {
-  console.log(data);
+ // console.log(data);
   data.daily.forEach((element, index) => {
     if (index == 0) {
       return;
@@ -118,7 +123,7 @@ setInterval(() => {
     zero = "";
   }
   const ampm = hour >= 12 ? "PM" : "AM";
-  timeD.innerHTML = `<span class="text-red-600">${hoursin12}</span>:${zero} ${minutes}<span id="am-pm"> ${ampm}</span>`;
+  timeD.innerHTML = `<span class="text-red-600">${hoursin12}</span>:${zero}${minutes}<span id="am-pm"> ${ampm}</span>`;
   //timeD.innerHTML = hoursin12 + ':' + zero + minutes + ' ' + `<span id="am-pm">${ampm}</span>`
   dateD.innerHTML = date + " " + months[month];
   dayD.innerHTML = days[day];
@@ -145,7 +150,7 @@ async function reverseFetch(latitude, longitude) {
 
 // card creation
 function cardCreate(element) {
-    console.log(element);
+  //console.log(element);
   const cardContainer = document.querySelector(".container");
   const card = document.createElement("div");
   card.classList.add(
@@ -188,3 +193,32 @@ locate_btn.addEventListener('click', () => {
 // default City
 findCoords("New Delhi");
 
+// Local Storage
+inputBox.addEventListener('focus',()=>{
+  recentSearches.style.display = 'block';
+  loadSearches()
+  // console.log(recentSearches);
+})
+
+// inputBox.addEventListener('blur',()=>{
+//   recentSearches.style.display = 'none';
+// });
+
+const saveSearch = (search) => {
+  const searches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+  if (!searches.includes(search)) {
+      searches.push(search);
+      localStorage.setItem('recentSearches', JSON.stringify(searches));
+  }
+};
+
+const loadSearches = () => {
+  const searches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+  recentSearches.innerHTML = searches.length ? '<ul>' + searches.map(search => `<li value = ${search} class = "option"><button class = "btn">${search}</button></li>`).join('') + '</ul>' : 'No recent searches';
+};
+
+
+var items = document.querySelectorAll("recent-searches-list li");
+items.forEach(item => item.addEventListener("click",()=>{
+   console.log(this.value);
+}))

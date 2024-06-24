@@ -61,19 +61,33 @@
           </div>
         </div>
       </div>
+
+      <!-- clock code -->
       <div class="clock border-2 border-white flex justify-center flex-col rounded-md text-4xl p-5">
         <div class="day"></div>
         <div class="date"></div>
          <div class="time font-semibold"></div>
          <div class="time-zone"></div>
       </div>
+
+      <!-- search bar and location btn-->
       <div class="searchBox flex flex-col gap-y-2  border-2 border-white px-4 py-10 rounded-md text-lg shadow-2xl">
+        <div class="inputBox flex flex-col">
         <input type="text" id="getCity" placeholder="for eg:New york" class="rounded-sm px-2 py-1 outline-none text-blue-900"/>
-        <button class="bg-sky-500 p-1 rounded-lg hover:bg-sky-400 btn-get">Get Data</button>
-        <hr />
-        <button class="currentLocation bg-green-400 rounded-md py-1 hover:bg-green-300 btn-locate">Current Location</button>
+        <div class="dropdown">
+        <ul class="absolute bg-gray-400 rounded-sm " id="recent-searches-list">
+          
+           
+           
+        
+        </ul>
       </div>
-    </main>
+      </div>
+        <button class="bg-sky-500 p-1 rounded-lg hover:bg-sky-400 btn-get btn-act">Get Data</button>
+        <hr />
+        <button class="currentLocation bg-green-400 rounded-md py-1 hover:bg-green-300 btn-locate btn-act">Current Location</button>
+      </div>
+   </main> <!--main end-->
      <section class="container flex p-2 justify-around mx-auto overflow-x-scroll">
      
      </section>
