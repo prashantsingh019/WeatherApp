@@ -44,6 +44,9 @@ const dayD = document.querySelector(".day");
 
 // GET LOCATION BUTTON ON CLICK
 get_btn.addEventListener("click", () => {
+  if(cityInput.value == ""){
+    alert("please enter city!!")
+  }
   findCoords(cityInput.value);
    saveSearch(cityInput.value);
   cityInput.value = "";
@@ -58,16 +61,17 @@ function findCoords(cityName) {
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${api_key}`
     )
-      .then((res) => {
-        if(!res.ok)
-        {
-          throw new Error('City not found');
+      .then((res) =>{ 
+        if(!res.ok){
+          alert("Invalid City");
+        }else{
+        return  res.json()
         }
-        res.json()
-      })
+        }
+        )
       .then((data) => {
-      //  console.log(data);
-        display(data);
+       console.log(data);
+       display(data);
       });
   } catch (error) {
     console.log(`Error while fetching ${error}`);
@@ -163,7 +167,7 @@ async function reverseFetch(latitude, longitude) {
 
 // card creation to show future forecasts
 function cardCreate(element) {
-  //console.log(element);
+  
   const cardContainer = document.querySelector(".container");
   const card = document.createElement("div");
   card.classList.add(
@@ -172,10 +176,7 @@ function cardCreate(element) {
     "border-gray-300",
     "p-5",
     "rounded-lg",
-    "bg-gray-500",
-    "m-2"
-
-  );
+   );
   const dt = element.dt;
   const timestampInMilliseconds = dt * 1000;
   const time = new Date(timestampInMilliseconds);
@@ -250,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
   searchDropdown.addEventListener('click', (event) => {
       if (event.target.tagName === 'LI') {
           searchInput.value = event.target.textContent;
+          removeElementsByClass('card');
           findCoords(searchInput.value);
-          
           searchDropdown.style.display = 'none';
       }
   });

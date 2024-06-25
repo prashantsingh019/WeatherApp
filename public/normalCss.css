@@ -33,3 +33,7 @@ body{
     background-color: rgb(204, 39, 39);
     cursor: pointer;
 }
+
+.card{
+    background-color: rgba(163, 159, 159, 0.46);
+}
