@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="normalCss.css" />
   </head>
-  <body class="text-white bg-black">
+  <body class="text-white bg-black overflow-scroll">
     <!-- header start -->
-    <header class="mb-1 overflow-hidden">
+    <header class="mb-1">
       <!-- navigation bar -->
       <nav
         class="flex items-center justify-between p-6 border-2 border-white rounded-lg shadow-sm"
@@ -37,9 +37,9 @@
       </nav>
     </header>
     <!-- header End -->
-    <main class="flex p-5 gap-x-5 justify-center overflow-hidden">
+    <main class="flex p-5 gap-x-5 justify-center overflow-x-hidden">
       <div
-        class="display flex border-2 border-white px-2 items-center rounded-md w-1/2 justify-between py-2 shadow-2xl"
+        class="display flex border-2 border-white px-2 items-center rounded-md w-1/2 justify-between py-2 shadow-2xl screen"
       >
         <div class="left-display flex flex-col gap-y-2">
           <div class="cityName text-4xl font-bold"></div>
@@ -96,7 +96,7 @@
           />
           <div id="dropdown">
          <ul
-            class="absolute bg-gray-400 rounded-sm dropdown"
+            class="absolute bg-gray-400 rounded-sm dropdown m-0 p-0 flex flex-col "
             id="recent-searches-list"
           >
           
