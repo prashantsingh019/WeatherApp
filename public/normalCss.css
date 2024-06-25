@@ -26,9 +26,9 @@ body{
     background-color: brown;
 }
 
-.dropdown{
+/* #recent-searches-list{
     display: none;
-}
+} */
 .option:active{
     background-color: rgb(204, 39, 39);
     cursor: pointer;
